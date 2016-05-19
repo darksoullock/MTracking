@@ -16,7 +16,7 @@ namespace MTracking.Controllers
         {
             ViewBag.Companies = _db.Companies;
             ViewBag.Countries = _db.Countries;
-            ViewBag.Statuses = _db.Statuses;
+            ViewBag.Statuses = new dic_Statuses[] { new dic_Statuses() { Status = "test" } };//_db.Statuses;
             return View();
         }
 
