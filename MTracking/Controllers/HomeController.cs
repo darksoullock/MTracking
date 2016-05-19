@@ -10,6 +10,11 @@ namespace MTracking.Controllers
     {
         public ActionResult Index()
         {
+            if (Session["user"] == null)
+            {
+                return Redirect("/Account/Login");
+            }
+
             return View();
         }
 

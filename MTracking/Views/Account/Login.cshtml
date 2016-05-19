@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+
+<h3 style="text-align:center; margin:5%;">Login</h3>
+
+<div class="container" style="max-width:300px; margin: 0 auto;">
+
+    <form onsubmit="return true;" action="/Account/Login" method="post">
+        <input type="email" id="email" class="form-control" placeholder="Email address" required autofocus style="margin:5px;">
+        <input type="password" id="password" class="form-control" placeholder="Password" required style="margin:5px;">
+        <button class="btn btn-sm btn-primary" type="submit" style="margin:5px;">Sign in</button>
+        <a href="/Account/Register" class="btn btn-default btn-sm" style="margin:5px;">Register</a>
+    </form>
+</div>
