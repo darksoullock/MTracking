@@ -1,4 +1,5 @@
 ﻿using MTracking.Models;
+using MTracking.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,21 +10,26 @@ namespace MTracking.Controllers
 {
     public class AccountController : Controller
     {
-        MContext _db = new MContext();
+        AccountRepository accountRepository = new AccountRepository();
+        DbRepository repository = new DbRepository();
 
         [HttpGet]
         public ActionResult Register()
         {
-            ViewBag.Companies = _db.Companies;
-            ViewBag.Countries = _db.Countries;
-            ViewBag.Statuses = _db.Statuses;
+            ViewBag.Companies = repository.GetCompaniesAsQueryable();
+            ViewBag.Countries = repository.GetCountriesAsQueryable();
+            ViewBag.Statuses = repository.GetStatusesAsQueryable();
             return View();
         }
 
         [HttpPost]
         public ActionResult Register(User user)
         {
-            return View();
+            accountRepository.AddUser(user);
+            Session["user"] = user;
+            return Redirect("/");
+
+            return View(user);
         }
 
         [HttpGet]
@@ -35,7 +41,21 @@ namespace MTracking.Controllers
         [HttpPost]
         public ActionResult Login(string email, string password)
         {
+            var user = accountRepository.GetUserByEmail(email);
+            if (user.Password==password)
+            {
+                Session["user"] = user;
+                return Redirect("/");
+            }
+
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult Logout()
+        {
+            Session["user"] = null;
+            return Redirect("/");
         }
     }
 }
