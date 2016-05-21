@@ -8,12 +8,17 @@
 
 <script>
     function validate() {
-        alert('infn');
-        return false;
+        //alert('infn');
+        return true;
     }
 </script>
 
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { onsubmit = "validate()" }))
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger" role="alert">@ViewBag.Error</div>
+}
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { onsubmit = "validate()", enctype = "multipart/form-data" }))
 {
     <div class="form-horizontal">
         <h4>User</h4>
@@ -57,7 +62,7 @@
         <div class="form-group">
             @Html.Label("Country", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("Country",
+                @Html.DropDownList("CountryId",
                (ViewBag.Countries as IEnumerable<MTracking.Models.dic_Countries>).Select(i => new SelectListItem() { Text = i.Name, Value = i.Id.ToString() }),
                new { @class = "form-control" })
             </div>
@@ -66,7 +71,7 @@
         <div class="form-group">
             @Html.Label("Status", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("Status",
+                @Html.DropDownList("StatusId",
                (ViewBag.Statuses as IEnumerable<MTracking.Models.dic_Statuses>).Select(i => new SelectListItem() { Text = i.Status, Value = i.Id.ToString() }),
                new { @class = "form-control" })
             </div>
@@ -75,7 +80,7 @@
         <div class="form-group">
             @Html.Label("Company", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("Company",
+                @Html.DropDownList("CompanyId",
                (ViewBag.Companies as IEnumerable<MTracking.Models.Company>).Select(i => new SelectListItem() { Text = i.Name, Value = i.Id.ToString() }),
                new { @class = "form-control" })
             </div>
@@ -84,7 +89,7 @@
         <div class="form-group">
             @Html.Label("Avatar", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor("avatar", new { type = "file" })
+                <input type="file" name="avatar"/>
             </div>
         </div>
 

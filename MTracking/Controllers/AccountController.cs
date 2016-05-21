@@ -2,6 +2,7 @@
 using MTracking.Repositories;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -10,12 +11,10 @@ namespace MTracking.Controllers
 {
     public class AccountController : Controller
     {
-        AccountRepository accountRepository = new AccountRepository();
-        DbRepository repository = new DbRepository();
-
         [HttpGet]
         public ActionResult Register()
         {
+            DbRepository repository = new DbRepository();
             ViewBag.Companies = repository.GetCompaniesAsQueryable();
             ViewBag.Countries = repository.GetCountriesAsQueryable();
             ViewBag.Statuses = repository.GetStatusesAsQueryable();
@@ -23,13 +22,37 @@ namespace MTracking.Controllers
         }
 
         [HttpPost]
-        public ActionResult Register(User user)
+        public ActionResult Register(User user, HttpPostedFileBase avatar,  string password2)
         {
+            DbRepository repository = new DbRepository();
+            ViewBag.Companies = repository.GetCompaniesAsQueryable();
+            ViewBag.Countries = repository.GetCountriesAsQueryable();
+            ViewBag.Statuses = repository.GetStatusesAsQueryable();
+
+            if (user.Password != password2)
+            {
+                ViewBag.Error = "Passwords mismatch";
+                return View(user);
+            }
+
+            var avatarsPath = Server.MapPath("~/Avatars");
+            if (!Directory.Exists(avatarsPath))
+            {
+                Directory.CreateDirectory(avatarsPath);
+            }
+
+            if (avatar != null)
+            {
+                string filename = System.IO.Path.GetRandomFileName();
+                var fullname = Path.Combine(avatarsPath, filename);
+                user.Picture = filename;
+                avatar.SaveAs(fullname);
+            }
+
+            AccountRepository accountRepository = new AccountRepository();
             accountRepository.AddUser(user);
             Session["user"] = user;
             return Redirect("/");
-
-            return View(user);
         }
 
         [HttpGet]
@@ -41,8 +64,9 @@ namespace MTracking.Controllers
         [HttpPost]
         public ActionResult Login(string email, string password)
         {
+            AccountRepository accountRepository = new AccountRepository();
             var user = accountRepository.GetUserByEmail(email);
-            if (user.Password==password)
+            if (user?.Password == password)
             {
                 Session["user"] = user;
                 return Redirect("/");
