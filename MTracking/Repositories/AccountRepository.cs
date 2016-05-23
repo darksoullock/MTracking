@@ -23,5 +23,10 @@ namespace MTracking.Repositories
         {
             return _db.Users.FirstOrDefault(i => i.Id == id);
         }
+
+        internal IQueryable<User> GetUsersAsQueryable()
+        {
+            return _db.Users;
+        }
     }
 }

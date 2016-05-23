@@ -22,7 +22,7 @@ namespace MTracking.Models
 
         public int? CompanyId { get; set; }
 
-        public Company Company { get; set; }
+        public virtual Company Company { get; set; }
 
         public int? StatusId { get; set; }
 
@@ -33,6 +33,11 @@ namespace MTracking.Models
         public int? CountryId { get; set; }
 
         public virtual dic_Countries Country { get; set; }
+
+        [InverseProperty("Owner")]
+        public virtual ICollection<Project> OwnedProjects { get; set; }
+
+        public virtual ICollection<Project> Projects { get; set; }
 
         public string Info { get; set; }
     }

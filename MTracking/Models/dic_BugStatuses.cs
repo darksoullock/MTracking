@@ -7,18 +7,12 @@ using System.Web;
 
 namespace MTracking.Models
 {
-    public class Project
+    public class dic_BugStatuses
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        public string Name { get; set; }
-
-        public int? OwnerId { get; set; }
-
-        public virtual User Owner { get; set; }
-
-        public virtual ICollection<User> Users { get; set; }
+        public string Status { get; set; }
 
         public virtual ICollection<Bug> Bugs { get; set; }
     }

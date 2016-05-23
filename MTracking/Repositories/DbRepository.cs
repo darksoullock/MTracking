@@ -10,6 +10,11 @@ namespace MTracking.Repositories
     {
         protected MContext _db = new MContext();
 
+        public IQueryable<Project> GetUserProjectsAsQueryable(int userId)
+        {
+            return _db.Projects.Where(i => i.OwnerId == userId || i.Users.Select(u => u.Id).Contains(userId));
+        }
+
         public IQueryable<Company> GetCompaniesAsQueryable()
         {
             return _db.Companies;
@@ -23,6 +28,17 @@ namespace MTracking.Repositories
         public IQueryable<dic_Statuses> GetStatusesAsQueryable()
         {
             return _db.Statuses;
+        }
+
+        public void AddProject(Project project)
+        {
+            _db.Projects.Add(project);
+            _db.SaveChanges();
+        }
+
+        public Project GetProjectById(int id)
+        {
+            return _db.Projects.FirstOrDefault(i => i.Id == id);
         }
     }
 }

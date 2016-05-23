@@ -169,8 +169,26 @@
     <Compile Include="Migrations\201605211238475_nullable_fk.Designer.cs">
       <DependentUpon>201605211238475_nullable_fk.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605230709153_bugs.cs" />
+    <Compile Include="Migrations\201605230709153_bugs.Designer.cs">
+      <DependentUpon>201605230709153_bugs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605230711218_bugs_.cs" />
+    <Compile Include="Migrations\201605230711218_bugs_.Designer.cs">
+      <DependentUpon>201605230711218_bugs_.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605231001403_projects_users.cs" />
+    <Compile Include="Migrations\201605231001403_projects_users.Designer.cs">
+      <DependentUpon>201605231001403_projects_users.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605231025563_projects_users2.cs" />
+    <Compile Include="Migrations\201605231025563_projects_users2.Designer.cs">
+      <DependentUpon>201605231025563_projects_users2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Bug.cs" />
     <Compile Include="Models\Company.cs" />
+    <Compile Include="Models\dic_BugStatuses.cs" />
     <Compile Include="Models\dic_Countries.cs" />
     <Compile Include="Models\dic_Statuses.cs" />
     <Compile Include="Models\MContext.cs" />
@@ -219,6 +237,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Home\Projects.cshtml" />
+    <Content Include="Views\Home\CreateProject.cshtml" />
+    <Content Include="Views\Home\ProjectDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -237,6 +258,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605211238475_nullable_fk.resx">
       <DependentUpon>201605211238475_nullable_fk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605230709153_bugs.resx">
+      <DependentUpon>201605230709153_bugs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605230711218_bugs_.resx">
+      <DependentUpon>201605230711218_bugs_.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605231001403_projects_users.resx">
+      <DependentUpon>201605231001403_projects_users.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605231025563_projects_users2.resx">
+      <DependentUpon>201605231025563_projects_users2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

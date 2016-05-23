@@ -1,0 +1,70 @@
+﻿@model MTracking.Models.Project
+
+@{
+    ViewBag.Title = "ProjectDetails";
+}
+
+@*<h2>@Model.Name</h2>*@
+
+<br />
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        @Model.Name
+    </div>
+
+    <!-- Table -->
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>Company</th>
+            <th>Country</th>
+        </tr>
+        <tr>
+            <td>@(Model.Owner?.FirstName) @(Model?.Owner.LastName) (Creator)</td>
+            <td>@(Model.Owner?.Company?.Name)</td>
+            <td>@(Model.Owner?.Country?.Name)</td>
+        </tr>
+        @foreach (var i in Model.Users)
+        {
+            <td>@i.FirstName @i.LastName</td>
+            <td>@(i.Company?.Name)</td>
+            <td>@(i.Country?.Name)</td>
+        }
+    </table>
+</div>
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script>
+    function getnames() {
+        var data = '';
+        $.ajax({
+            method: "GET",
+            url: "/Home/Users",
+            data: {
+                q: $('#names').val()
+            },
+            error: function () { alert('error'); }
+        }).done(function (html) {
+            data = html;
+        });
+
+        return ['asd'];//JSON.parse(data);
+    }
+    
+    $(document).ready(function () {
+        $("#names").autocomplete({
+            source: function (request, response) {
+                response(getnames());
+            }
+        })
+    });
+</script>
+
+<input id="names">
+
+
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

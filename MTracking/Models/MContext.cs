@@ -16,6 +16,10 @@ namespace MTracking.Models
 
         public DbSet<Company> Companies { get; set; }
 
+        public DbSet<Bug> Bugs { get; set; }
+
+        public DbSet<dic_BugStatuses> BugStatuses { get; set; }
+
         public DbSet<Project> Projects { get; set; }
     }
 }

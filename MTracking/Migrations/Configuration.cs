@@ -29,6 +29,14 @@ namespace MTracking.Migrations
                 new Company() { Name = "None" }
             );
 
+            context.BugStatuses.AddOrUpdate(i => i.Status,
+                            new dic_BugStatuses() { Status = "New" },
+                            new dic_BugStatuses() { Status = "Active" },
+                            new dic_BugStatuses() { Status = "Resolved" },
+                            new dic_BugStatuses() { Status = "Closed" }
+                        );
+
+
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
