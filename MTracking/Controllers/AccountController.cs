@@ -81,5 +81,31 @@ namespace MTracking.Controllers
             Session["user"] = null;
             return Redirect("/");
         }
+
+        public ActionResult MyProfile()
+        {
+            var user = Session["user"] as User;
+            if (user == null)
+            {
+                return Redirect("/Account/Login");
+            }
+
+            //var db = new AccountRepository();
+            //user = db.GetUserById(user.Id);
+
+            return View(user);
+        }
+
+        public FileResult Avatar(string name)
+        {
+            var path = Server.MapPath("~/Avatars/");
+            var filename = Path.Combine(path, name);
+            if (!System.IO.File.Exists(filename)||Path.GetDirectoryName(filename)!=Path.GetDirectoryName(path))
+            {
+                return null;
+            }
+
+            return File(System.IO.File.ReadAllBytes(filename),"image");
+        }
     }
 }

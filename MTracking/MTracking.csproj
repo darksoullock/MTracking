@@ -240,6 +240,7 @@
     <Content Include="Views\Home\Projects.cshtml" />
     <Content Include="Views\Home\CreateProject.cshtml" />
     <Content Include="Views\Home\ProjectDetails.cshtml" />
+    <Content Include="Views\Account\MyProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

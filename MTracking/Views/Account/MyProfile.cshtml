@@ -1,0 +1,83 @@
+﻿@model MTracking.Models.User
+
+@{
+    ViewBag.Title = "Profile";
+}
+
+<h2>Profile</h2>
+
+<div>
+    <h4>User</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayName("Avatar")
+        </dt>
+
+        <dd>
+            <img src="/Account/Avatar?name=@Model.Picture" alt="Stop looking at me!" style="max-width:200px;" class="img-rounded">
+        </dd>
+
+        <dt>
+            @Html.DisplayName("First Name")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Last Name")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Company")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Company.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Country")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Country.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Status")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Email")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Info")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Info)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
