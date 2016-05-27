@@ -1,0 +1,33 @@
+﻿@model MTracking.Models.Project
+
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Company</th>
+        <th>Country</th>
+    </tr>
+    <tr>
+        <td>@(Model.Owner?.FirstName) @(Model?.Owner.LastName) (Creator)</td>
+        <td>@(Model.Owner?.Company?.Name)</td>
+        <td>@(Model.Owner?.Country?.Name)</td>
+    </tr>
+    @foreach (var i in Model.Users)
+    {
+        <td>@i.FirstName @i.LastName</td>
+        <td>@(i.Company?.Name)</td>
+        <td>@(i.Country?.Name)</td>
+    }
+</table>
+
+<div class="row">
+    <div class="col-md-3">
+        @Html.DropDownList("User",
+               (ViewBag.Users as IEnumerable<MTracking.Models.User>)
+               .Select(i => new SelectListItem() { Text = i.FirstName + " " + i.LastName, Value = i.Id.ToString() }),
+               new { @class = "form-control" })
+    </div>
+    <div class="col-md-3">
+        <a class="btn btn-default">Add</a>
+    </div>
+</div>
+

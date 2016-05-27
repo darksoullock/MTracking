@@ -12,7 +12,13 @@ namespace MTracking.Models
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        public string Name { get; set; }
+        public string Description { get; set; }
+
+        public string ReproductionSteps { get; set; }
+
+        public string ExpectedResult { get; set; }
+
+        public string ActualResult { get; set; }
 
         public int BugStatusId { get; set; }
 

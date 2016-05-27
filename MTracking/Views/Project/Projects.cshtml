@@ -5,7 +5,7 @@
 }
 
 <h2>Projects</h2>
-<a href="/Home/CreateProject" style="margin:10px;" class="btn btn-success btn-xs">Create</a>
+<a href="/Project/Create" style="margin:10px;" class="btn btn-success btn-xs">Create</a>
 
 <ul class="list-group">
     @{ 
@@ -15,7 +15,7 @@
     <div class="list-group">
         @foreach (var item in Model)
         {
-            <a href="/Home/ProjectDetails/@item.Id" class="list-group-item">
+            <a href="/Project/Details/@item.Id" class="list-group-item">
                 @item.Name
                 @if (@item.OwnerId == id)
                 {
@@ -37,6 +37,3 @@
 }
 
 
-
-
-</table>

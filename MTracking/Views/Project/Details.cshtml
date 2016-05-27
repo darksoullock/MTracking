@@ -1,0 +1,46 @@
+﻿@model MTracking.Models.Project
+
+@{
+    ViewBag.Title = "ProjectDetails";
+}
+
+@*<h2>@Model.Name</h2>*@
+
+<br />
+
+<div class="btn-group" role="group" aria-label="..." style="margin-bottom:20px;">
+    <a onclick="load_content('/Project/InfoPartial?id=@Model.Id')" class="btn btn-default">Overview</a>
+    <a onclick="load_content('/Project/TeamPartial?id=@Model.Id')" class="btn btn-default">Team</a>
+    <a onclick="load_content('/Bug/BugsPartial?id=@Model.Id')" class="btn btn-default">Bugs</a>
+</div>
+
+<div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            @Model.Name
+        </div>
+        <div id="content" style="margin:10px;"/>
+    </div>
+</div>
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script>
+    function load_content(lurl) {
+        $.ajax({
+            method: "GET",
+            url: lurl,
+            error: function () { alert('error'); }
+        }).done(function (html) {
+            $('#content').html(html);
+        });
+    }
+
+    $(document).ready(function () {
+        load_content('/Project/InfoPartial?id=@Model.Id')
+    });
+</script>
+
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

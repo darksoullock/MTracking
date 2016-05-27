@@ -157,7 +157,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BugController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -184,6 +186,14 @@
     <Compile Include="Migrations\201605231025563_projects_users2.cs" />
     <Compile Include="Migrations\201605231025563_projects_users2.Designer.cs">
       <DependentUpon>201605231025563_projects_users2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605270713365_ProjectDescription.cs" />
+    <Compile Include="Migrations\201605270713365_ProjectDescription.Designer.cs">
+      <DependentUpon>201605270713365_ProjectDescription.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605270858424_BugDescription.cs" />
+    <Compile Include="Migrations\201605270858424_BugDescription.Designer.cs">
+      <DependentUpon>201605270858424_BugDescription.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Bug.cs" />
@@ -233,14 +243,16 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Home\Projects.cshtml" />
-    <Content Include="Views\Home\CreateProject.cshtml" />
-    <Content Include="Views\Home\ProjectDetails.cshtml" />
+    <Content Include="Views\Project\Projects.cshtml" />
+    <Content Include="Views\Project\Create.cshtml" />
+    <Content Include="Views\Project\Details.cshtml" />
     <Content Include="Views\Account\MyProfile.cshtml" />
+    <Content Include="Views\Project\_Description.cshtml" />
+    <Content Include="Views\Project\_Team.cshtml" />
+    <Content Include="Views\Bug\_Bugs.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -271,6 +283,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605231025563_projects_users2.resx">
       <DependentUpon>201605231025563_projects_users2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605270713365_ProjectDescription.resx">
+      <DependentUpon>201605270713365_ProjectDescription.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605270858424_BugDescription.resx">
+      <DependentUpon>201605270858424_BugDescription.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

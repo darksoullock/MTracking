@@ -1,0 +1,19 @@
+﻿@model MTracking.Models.Project
+
+
+<table class="table">
+    <tr>
+        <th>Bug Id</th>
+        <th>Description</th>
+    </tr>
+    @foreach (var i in Model.Bugs)
+    {
+        <tr>
+            <td>@i.Id</td>
+            <td>@i.Description</td>
+        </tr>
+    }
+
+</table>
+
+<a class="btn btn-default" href="/Bug/Create" role="button">Create bug</a>

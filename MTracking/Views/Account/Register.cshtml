@@ -82,6 +82,7 @@
             <div class="col-md-10">
                 @Html.DropDownList("CompanyId",
                (ViewBag.Companies as IEnumerable<MTracking.Models.Company>).Select(i => new SelectListItem() { Text = i.Name, Value = i.Id.ToString() }),
+               "Select a company",  
                new { @class = "form-control" })
             </div>
         </div>

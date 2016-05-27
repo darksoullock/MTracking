@@ -21,5 +21,7 @@ namespace MTracking.Models
         public virtual ICollection<User> Users { get; set; }
 
         public virtual ICollection<Bug> Bugs { get; set; }
+
+        public string Description { get; set; }
     }
 }
