@@ -37,7 +37,7 @@
     }
 
     $(document).ready(function () {
-        load_content('/Project/InfoPartial?id=@Model.Id')
+        load_content('@(ViewBag.Tab)?id=@Model.Id')
     });
 </script>
 

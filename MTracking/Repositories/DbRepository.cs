@@ -30,6 +30,17 @@ namespace MTracking.Repositories
             return _db.Statuses;
         }
 
+        public void AddBug(Bug bug)
+        {
+            _db.Bugs.Add(bug);
+            _db.SaveChanges();
+        }
+
+        public IQueryable<dic_BugStatuses> GetBugStatusesAsQueryable()
+        {
+            return _db.BugStatuses;
+        }
+
         public void AddProject(Project project)
         {
             _db.Projects.Add(project);
@@ -41,6 +52,34 @@ namespace MTracking.Repositories
         public Project GetProjectById(int id)
         {
             return _db.Projects.FirstOrDefault(i => i.Id == id);
+        }
+
+        public void AddUserToProject(int userId, int projectId)
+        {
+            var user = _db.Users.FirstOrDefault(i => i.Id == userId);
+            if (user==null)
+            { 
+                return;
+            }
+
+            _db.Projects.FirstOrDefault(i => i.Id == projectId)?.Users?.Add(user);
+            _db.SaveChanges();
+        }
+
+        public Project GetProjectByBugId(int id)
+        {
+            return _db.Bugs.FirstOrDefault(i => i.Id == id).Project;
+        }
+
+        internal void ChangeBugStatus(int bugId, int statusId)
+        {
+            _db.Bugs.FirstOrDefault(i => i.Id == bugId).BugStatusId = statusId;
+            _db.SaveChanges();
+        }
+
+        internal object GetBugById(int id)
+        {
+            return _db.Bugs.FirstOrDefault(i => i.Id == id);
         }
     }
 }

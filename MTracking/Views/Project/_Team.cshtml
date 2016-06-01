@@ -19,15 +19,20 @@
     }
 </table>
 
-<div class="row">
-    <div class="col-md-3">
-        @Html.DropDownList("User",
+<form method="post" action="/Project/AddTeamToProject">
+    <div class="row">
+        <div class="col-md-3">
+            @Html.DropDownList("userId",
                (ViewBag.Users as IEnumerable<MTracking.Models.User>)
                .Select(i => new SelectListItem() { Text = i.FirstName + " " + i.LastName, Value = i.Id.ToString() }),
                new { @class = "form-control" })
+        </div>
+        <div class="col-md-3">
+            <button class="btn btn-default" type="submit">Add</button>
+        </div>
     </div>
-    <div class="col-md-3">
-        <a class="btn btn-default">Add</a>
-    </div>
-</div>
+
+    <input type="hidden" value="@Model.Id" name="projectId"/>
+
+</form>
 

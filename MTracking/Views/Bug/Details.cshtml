@@ -1,0 +1,76 @@
+﻿@model MTracking.Models.Bug
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<script>
+    function changeStatus()
+    {
+        $.ajax({
+            method: "GET",
+            url: "/Bug/ChangeStatus",
+            data:{
+                statusId: $('#BugStatusId').val(),
+                bugId: @Model.Id,
+            },
+            error: function () { alert('error'); }
+    });
+    }
+</script>
+
+<div>
+    <h4>Bug</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BugStatus.Status)
+        </dt>
+
+        <dd>
+            @Html.DropDownList("BugStatusId",
+               (ViewBag.Statuses as IEnumerable<MTracking.Models.dic_BugStatuses>).Select(i => new SelectListItem() { Text = i.Status, Value = i.Id.ToString() }),
+               null
+               , htmlAttributes: new { @class = "form-control" })
+            <a class="btn btn-success btn-xs" style="margin:5px;" onclick="changeStatus()">Change status</a>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReproductionSteps)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReproductionSteps)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExpectedResult)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExpectedResult)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ActualResult)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ActualResult)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <a href="/Project/Details/@Model.ProjectId?tab=/Bug/BugsPartial">Back</a>
+</p>

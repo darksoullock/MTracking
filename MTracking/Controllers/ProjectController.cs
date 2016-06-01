@@ -51,7 +51,7 @@ namespace MTracking.Controllers
             return Redirect("/Project/Projects");
         }
 
-        public ActionResult Details(int id)
+        public ActionResult Details(int id, string tab = "/Project/InfoPartial")
         {
             var user = Session["user"] as User;
             if (user == null)
@@ -59,6 +59,7 @@ namespace MTracking.Controllers
                 return Redirect("/Account/Login");
             }
 
+            ViewBag.Tab = tab;
             var db = new DbRepository();
             return View(db.GetProjectById(id));
         }
@@ -87,6 +88,25 @@ namespace MTracking.Controllers
             ViewBag.Users = acc.GetUsersAsQueryable().Where(i => !i.Projects.Select(j => j.Id).Contains(id));
             var db = new DbRepository();
             return PartialView("_Team", db.GetProjectById(id));
+        }
+
+        public ActionResult AddTeamToProject(int userId, int projectId)
+        {
+            var user = Session["user"] as User;
+            if (user == null)
+            {
+                return null;
+            }
+
+            var db = new DbRepository();
+            if (db.GetProjectById(projectId).Owner.Id != user.Id)
+            {
+                return null;
+            }
+
+            db.AddUserToProject(userId, projectId);
+
+            return Redirect("/Project/Details/" + projectId+"?tab=Team");
         }
     }
 }

@@ -195,6 +195,10 @@
     <Compile Include="Migrations\201605270858424_BugDescription.Designer.cs">
       <DependentUpon>201605270858424_BugDescription.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606011333159_fk-bug-project.cs" />
+    <Compile Include="Migrations\201606011333159_fk-bug-project.Designer.cs">
+      <DependentUpon>201606011333159_fk-bug-project.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Bug.cs" />
     <Compile Include="Models\Company.cs" />
@@ -253,6 +257,8 @@
     <Content Include="Views\Project\_Description.cshtml" />
     <Content Include="Views\Project\_Team.cshtml" />
     <Content Include="Views\Bug\_Bugs.cshtml" />
+    <Content Include="Views\Bug\Create.cshtml" />
+    <Content Include="Views\Bug\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -289,6 +295,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605270858424_BugDescription.resx">
       <DependentUpon>201605270858424_BugDescription.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606011333159_fk-bug-project.resx">
+      <DependentUpon>201606011333159_fk-bug-project.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

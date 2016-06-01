@@ -8,20 +8,24 @@
 <a href="/Project/Create" style="margin:10px;" class="btn btn-success btn-xs">Create</a>
 
 <ul class="list-group">
-    @{ 
+    @{
         int id = (Session["user"] as dynamic).Id;
     }
 
     <div class="list-group">
         @foreach (var item in Model)
         {
+            var bugs = @item.Bugs.Count(i => i.BugStatus?.Status != "Closed");
             <a href="/Project/Details/@item.Id" class="list-group-item">
                 @item.Name
                 @if (@item.OwnerId == id)
                 {
                     <span>*</span>
                 }
-                <span class="badge">14</span>
+                @if (@bugs > 0)
+                {
+                    <span class="badge">@bugs</span>
+                }
             </a>
         }
     </div>

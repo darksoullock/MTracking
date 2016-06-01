@@ -24,7 +24,7 @@ namespace MTracking.Models
 
         public dic_BugStatuses BugStatus { get; set; }
 
-        public int ProjectId { get; set; }
+        public virtual int ProjectId { get; set; }
 
         public virtual Project Project { get; set; }
     }
