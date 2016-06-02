@@ -37,7 +37,8 @@
     }
 
     $(document).ready(function () {
-        load_content('@(ViewBag.Tab)?id=@Model.Id')
+        $.ajaxSetup({ cache: false });
+        load_content('@(ViewBag.Tab)?id=@Model.Id');
     });
 </script>
 
