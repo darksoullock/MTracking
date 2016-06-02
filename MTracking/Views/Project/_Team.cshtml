@@ -6,11 +6,6 @@
         <th>Company</th>
         <th>Country</th>
     </tr>
-    <tr>
-        <td>@(Model.Owner?.FirstName) @(Model?.Owner.LastName) (Creator)</td>
-        <td>@(Model.Owner?.Company?.Name)</td>
-        <td>@(Model.Owner?.Country?.Name)</td>
-    </tr>
     @foreach (var i in Model.Users)
     {
         <td>@i.FirstName @i.LastName</td>

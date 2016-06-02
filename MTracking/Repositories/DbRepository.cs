@@ -45,6 +45,7 @@ namespace MTracking.Repositories
         {
             _db.Projects.Add(project);
             var owner = _db.Users.FirstOrDefault(i => i.Id == project.OwnerId);
+            project.Users = new List<User>();
             project.Users.Add(owner);
             _db.SaveChanges();
         }
