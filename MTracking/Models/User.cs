@@ -20,17 +20,17 @@ namespace MTracking.Models
 
         public string LastName { get; set; }
 
-        public int? CompanyId { get; set; }
+        public virtual int? CompanyId { get; set; }
 
         public virtual Company Company { get; set; }
 
-        public int? StatusId { get; set; }
+        public virtual int? StatusId { get; set; }
 
         public virtual dic_Statuses Status { get; set; }
 
         public string Picture { get; set; }
 
-        public int? CountryId { get; set; }
+        public virtual int? CountryId { get; set; }
 
         public virtual dic_Countries Country { get; set; }
 
@@ -38,6 +38,8 @@ namespace MTracking.Models
         public virtual ICollection<Project> OwnedProjects { get; set; }
 
         public virtual ICollection<Project> Projects { get; set; }
+
+        public virtual ICollection<Bug> AssignedBugs { get; set; }
 
         public string Info { get; set; }
     }

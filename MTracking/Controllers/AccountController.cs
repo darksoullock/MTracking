@@ -90,8 +90,8 @@ namespace MTracking.Controllers
                 return Redirect("/Account/Login");
             }
 
-            //var db = new AccountRepository();
-            //user = db.GetUserById(user.Id);
+            var db = new AccountRepository();
+            user = db.GetUserById(user.Id);
 
             return View(user);
         }

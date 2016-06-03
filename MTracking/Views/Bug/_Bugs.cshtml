@@ -5,13 +5,15 @@
     <tr>
         <th>Bug Id</th>
         <th>Description</th>
+        <th>Status</th>
         <th></th>
     </tr>
-    @foreach (var i in Model.Bugs)
+    @foreach (var i in Model.Bugs.OrderByDescending(b=>b.Id))
     {
         <tr>
             <td>@i.Id</td>
             <td>@i.Description</td>
+            <td>@i.BugStatus.Status</td>
             <td><a href="/Bug/Details/@i.Id">Details</a></td>
         </tr>
     }

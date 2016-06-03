@@ -10,6 +10,7 @@ namespace MTracking.Controllers
 {
     public class ProjectController : Controller
     {
+        [HttpGet]
         public ActionResult Projects()
         {
             var user = Session["user"] as User;
@@ -20,7 +21,21 @@ namespace MTracking.Controllers
 
             var repositiory = new DbRepository();
             var projects = repositiory.GetUserProjectsAsQueryable(user.Id);
-            return View(projects);
+            return View(projects.OrderBy(i => i.Name));
+        }
+
+        [HttpPost]
+        public ActionResult Projects(string query)
+        {
+            var user = Session["user"] as User;
+            if (user == null)
+            {
+                return Redirect("/Account/Login");
+            }
+
+            var repositiory = new DbRepository();
+            var projects = repositiory.GetUserProjectsAsQueryable(user.Id).ToArray().Where(i => i.Name.ToUpper().Contains(query.ToUpper()));
+            return View(projects.OrderBy(i => i.Name));
         }
 
         [HttpGet]
@@ -106,7 +121,38 @@ namespace MTracking.Controllers
 
             db.AddUserToProject(userId, projectId);
 
-            return Redirect("/Project/Details/" + projectId+"?tab=Team");
+            return Redirect("/Project/Details/" + projectId + "?tab=/Project/TeamPartial");
+        }
+
+        public ActionResult Delete(int id)
+        {
+            var user = Session["user"] as User;
+            if (user == null)
+            {
+                return null;
+            }
+
+            var db = new DbRepository();
+            if (db.GetProjectById(id).OwnerId == user.Id)
+            {
+                db.RemoveProject(id);
+            }
+
+            return Redirect("/Project/Projects");
+        }
+
+        public ActionResult Leave(int id)
+        {
+            var user = Session["user"] as User;
+            if (user == null)
+            {
+                return null;
+            }
+
+            var db = new DbRepository();
+            db.LeaveProject(id, user.Id);
+
+            return Redirect("/Project/Projects");
         }
     }
 }

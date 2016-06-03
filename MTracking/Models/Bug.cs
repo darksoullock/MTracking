@@ -20,9 +20,13 @@ namespace MTracking.Models
 
         public string ActualResult { get; set; }
 
-        public int BugStatusId { get; set; }
+        public virtual int BugStatusId { get; set; }
 
-        public dic_BugStatuses BugStatus { get; set; }
+        public virtual dic_BugStatuses BugStatus { get; set; }
+
+        public virtual int? UserId { get; set; }
+
+        public virtual User User { get; set; }
 
         public virtual int ProjectId { get; set; }
 

@@ -199,6 +199,10 @@
     <Compile Include="Migrations\201606011333159_fk-bug-project.Designer.cs">
       <DependentUpon>201606011333159_fk-bug-project.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606030827325_BugsAssignment.cs" />
+    <Compile Include="Migrations\201606030827325_BugsAssignment.Designer.cs">
+      <DependentUpon>201606030827325_BugsAssignment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Bug.cs" />
     <Compile Include="Models\Company.cs" />
@@ -215,6 +219,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\loading_big.gif" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -298,6 +303,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606011333159_fk-bug-project.resx">
       <DependentUpon>201606011333159_fk-bug-project.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606030827325_BugsAssignment.resx">
+      <DependentUpon>201606030827325_BugsAssignment.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

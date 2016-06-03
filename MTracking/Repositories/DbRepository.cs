@@ -82,5 +82,36 @@ namespace MTracking.Repositories
         {
             return _db.Bugs.FirstOrDefault(i => i.Id == id);
         }
+
+        public void RemoveProject(int id)
+        {
+            var project = _db.Projects.FirstOrDefault(i => i.Id == id);
+            _db.Projects.Remove(project);
+            _db.SaveChanges();
+        }
+
+        public IEnumerable<User> GetProjectUsersById(int id)
+        {
+            var project = _db.Projects.FirstOrDefault(i => i.Id == id);
+            var users = project.Users;
+            return users;
+        }
+
+        public void ChangeBugUser(int bugId, int userId)
+        {
+            _db.Bugs.FirstOrDefault(i => i.Id == bugId).UserId = userId;
+            _db.SaveChanges();
+        }
+
+        public void LeaveProject(int id, int userId)
+        {
+            var project = _db.Projects.FirstOrDefault(i => i.Id == id);
+            var user = project.Users.FirstOrDefault(i=>i.Id==userId);
+            if (user!=null)
+            {
+                project.Users.Remove(user);
+                _db.SaveChanges();
+            }
+        }
     }
 }

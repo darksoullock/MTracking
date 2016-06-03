@@ -7,6 +7,16 @@
 <h2>Projects</h2>
 <a href="/Project/Create" style="margin:10px;" class="btn btn-success btn-xs">Create</a>
 
+<br />
+<div>
+    <form method="post" action="/Project/Projects">
+        <input type="text" class="form-control" name="query" placeholder="Search..." style="display:inline;">
+        <button type="submit" class="btn btn-default">Search</button>
+    </form>
+</div>
+
+<br />
+
 <ul class="list-group">
     @{
         int id = (Session["user"] as dynamic).Id;

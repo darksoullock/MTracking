@@ -19,7 +19,7 @@
         <div class="panel-heading">
             @Model.Name
         </div>
-        <div id="content" style="margin:10px;"/>
+        <div id="content" style="margin:10px; align-items:center;"/>
     </div>
 </div>
 
@@ -27,6 +27,8 @@
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script>
     function load_content(lurl) {
+
+        $('#content').html('<img style="margin:auto; width:300px;" src="/Content/loading_big.gif"/>');
         $.ajax({
             method: "GET",
             url: lurl,

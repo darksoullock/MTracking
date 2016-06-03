@@ -2,3 +2,12 @@
 
 
 <a>@Model.Description</a>
+<hr />
+@if (Model.OwnerId==(Session["user"] as MTracking.Models.User).Id)
+{
+    <a class="btn btn-danger btn-xs" style="margin:5px; float:right;" href="/Project/Delete/@Model.Id" >Delete</a>
+}
+else
+{
+    <a class="btn btn-danger btn-xs" style="margin:5px; float:right;" href="/Project/Leave/@Model.Id">Leave</a>
+}

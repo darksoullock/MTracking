@@ -33,6 +33,7 @@ namespace MTracking.Controllers
 
             var db = new DbRepository();
             ViewBag.Statuses = db.GetBugStatusesAsQueryable();
+            ViewBag.Users = db.GetProjectUsersById(id);
             return View(new Bug() { ProjectId = id });
         }
 
@@ -74,6 +75,24 @@ namespace MTracking.Controllers
             db.ChangeBugStatus(bugId, statusId);
         }
 
+        public void ChangeAssignedUser(int userId, int bugId)
+        {
+            var user = Session["user"] as User;
+            if (user == null)
+            {
+                return;
+            }
+
+            var db = new DbRepository();
+            var projects = db.GetProjectByBugId(bugId);
+            if (projects.Owner.Id != user.Id && projects.Users.FirstOrDefault(i => i.Id == user.Id) == null)
+            {
+                return;
+            }
+
+            db.ChangeBugUser(bugId, userId);
+        }
+
         public ActionResult Details(int id)
         {
             var user = Session["user"] as User;
@@ -84,6 +103,8 @@ namespace MTracking.Controllers
 
             var db = new DbRepository();
             ViewBag.Statuses = db.GetBugStatusesAsQueryable();
+            var projectId = db.GetProjectByBugId(id).Id;
+            ViewBag.Users = db.GetProjectUsersById(projectId);
             return View(db.GetBugById(id));
         }
     }
