@@ -78,7 +78,7 @@ namespace MTracking.Repositories
             _db.SaveChanges();
         }
 
-        internal object GetBugById(int id)
+        public Bug GetBugById(int id)
         {
             return _db.Bugs.FirstOrDefault(i => i.Id == id);
         }
@@ -106,12 +106,32 @@ namespace MTracking.Repositories
         public void LeaveProject(int id, int userId)
         {
             var project = _db.Projects.FirstOrDefault(i => i.Id == id);
-            var user = project.Users.FirstOrDefault(i=>i.Id==userId);
-            if (user!=null)
+            var user = project.Users.FirstOrDefault(i => i.Id == userId);
+            if (user != null)
             {
                 project.Users.Remove(user);
                 _db.SaveChanges();
             }
+        }
+
+        public void AddComment(int userId, string text, int bugId)
+        {
+
+            var comment = new Comment()
+            {
+                BugId = bugId,
+                Content = text,
+                DateAdded = DateTime.Now,
+                UserId = userId
+            };
+
+            _db.Comments.Add(comment);
+            _db.SaveChanges();
+        }
+
+        public IEnumerable<Comment> GetComments(int bugId)
+        {
+            return _db.Comments.Where(i => i.BugId == bugId);
         }
     }
 }

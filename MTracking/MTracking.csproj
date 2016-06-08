@@ -203,8 +203,13 @@
     <Compile Include="Migrations\201606030827325_BugsAssignment.Designer.cs">
       <DependentUpon>201606030827325_BugsAssignment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606081330033_Comments.cs" />
+    <Compile Include="Migrations\201606081330033_Comments.Designer.cs">
+      <DependentUpon>201606081330033_Comments.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Bug.cs" />
+    <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\dic_BugStatuses.cs" />
     <Compile Include="Models\dic_Countries.cs" />
@@ -306,6 +311,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606030827325_BugsAssignment.resx">
       <DependentUpon>201606030827325_BugsAssignment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606081330033_Comments.resx">
+      <DependentUpon>201606081330033_Comments.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
