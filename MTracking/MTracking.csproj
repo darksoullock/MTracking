@@ -157,6 +157,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ApiController.cs" />
     <Compile Include="Controllers\BugController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
@@ -202,6 +203,10 @@
     <Compile Include="Migrations\201606030827325_BugsAssignment.cs" />
     <Compile Include="Migrations\201606030827325_BugsAssignment.Designer.cs">
       <DependentUpon>201606030827325_BugsAssignment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606041241374_Token.cs" />
+    <Compile Include="Migrations\201606041241374_Token.Designer.cs">
+      <DependentUpon>201606041241374_Token.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Bug.cs" />
@@ -267,6 +272,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Api\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -306,6 +312,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606030827325_BugsAssignment.resx">
       <DependentUpon>201606030827325_BugsAssignment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606041241374_Token.resx">
+      <DependentUpon>201606041241374_Token.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

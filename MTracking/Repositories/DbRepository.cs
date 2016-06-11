@@ -67,6 +67,11 @@ namespace MTracking.Repositories
             _db.SaveChanges();
         }
 
+        public IEnumerable<Bug> GetProjectBugs(int projectId)
+        {
+            return _db.Bugs.Where(i=>i.ProjectId==projectId);
+        }
+
         public Project GetProjectByBugId(int id)
         {
             return _db.Bugs.FirstOrDefault(i => i.Id == id).Project;
@@ -78,7 +83,7 @@ namespace MTracking.Repositories
             _db.SaveChanges();
         }
 
-        internal object GetBugById(int id)
+        public Bug GetBugById(int id)
         {
             return _db.Bugs.FirstOrDefault(i => i.Id == id);
         }

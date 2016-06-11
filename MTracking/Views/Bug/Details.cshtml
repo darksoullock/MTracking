@@ -96,6 +96,19 @@
             @Html.DisplayFor(model => model.ActualResult)
         </dd>
 
+        <hr />
+
+        <dt>
+            @Html.DisplayName("Add comment")
+        </dt>
+
+        <dd>
+        <form method="get" action="/Bug/">
+            @Html.TextArea("Comment", new { @class = "form-control", rows = 5 })
+            <br/>
+            <button type="button" class="btn btn-default">Add</button>
+        </form>
+            </dd>
     </dl>
 </div>
 <p>

@@ -40,7 +40,7 @@
         </div>
 
         <div class="form-group">
-            @Html.Label("Bug status", "BugStatusId", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("BugStatusId", "Bug Status", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("BugStatusId",
                (ViewBag.Statuses as IEnumerable<MTracking.Models.dic_BugStatuses>).Select(i => new SelectListItem() { Text = i.Status, Value = i.Id.ToString() }),
