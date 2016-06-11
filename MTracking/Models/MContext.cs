@@ -21,5 +21,7 @@ namespace MTracking.Models
         public DbSet<dic_BugStatuses> BugStatuses { get; set; }
 
         public DbSet<Project> Projects { get; set; }
+
+        public DbSet<Comment> Comments { get; set; }
     }
 }

@@ -44,5 +44,7 @@ namespace MTracking.Models
         public virtual ICollection<Bug> AssignedBugs { get; set; }
 
         public string Info { get; set; }
+
+        public virtual ICollection<Comment> Comments { get; set; }
     }
 }

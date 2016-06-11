@@ -105,7 +105,21 @@ namespace MTracking.Controllers
             ViewBag.Statuses = db.GetBugStatusesAsQueryable();
             var projectId = db.GetProjectByBugId(id).Id;
             ViewBag.Users = db.GetProjectUsersById(projectId);
+            ViewBag.Comments = db.GetComments(id);
             return View(db.GetBugById(id));
+        }
+
+        public ActionResult AddComment(int bugId, string text)
+        {
+            var user = Session["user"] as User;
+            if (user == null)
+            {
+                return Redirect("/");
+            }
+
+            var db = new DbRepository();
+            db.AddComment(user.Id, text, bugId);
+            return Redirect("/Bug/Details/"+bugId);
         }
     }
 }
