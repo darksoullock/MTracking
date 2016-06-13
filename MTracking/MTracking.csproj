@@ -208,9 +208,13 @@
     <Compile Include="Migrations\201606041241374_Token.Designer.cs">
       <DependentUpon>201606041241374_Token.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201606081330033_Comments.cs" />
-    <Compile Include="Migrations\201606081330033_Comments.Designer.cs">
-      <DependentUpon>201606081330033_Comments.cs</DependentUpon>
+    <Compile Include="Migrations\201606110850346_r1.cs" />
+    <Compile Include="Migrations\201606110850346_r1.Designer.cs">
+      <DependentUpon>201606110850346_r1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606110853170_r2.cs" />
+    <Compile Include="Migrations\201606110853170_r2.Designer.cs">
+      <DependentUpon>201606110853170_r2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Bug.cs" />
@@ -238,6 +242,7 @@
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ClassDiagram1.cd" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -318,11 +323,14 @@
     <EmbeddedResource Include="Migrations\201606030827325_BugsAssignment.resx">
       <DependentUpon>201606030827325_BugsAssignment.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606081330033_Comments.resx">
-      <DependentUpon>201606081330033_Comments.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606041241374_Token.resx">
       <DependentUpon>201606041241374_Token.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606110850346_r1.resx">
+      <DependentUpon>201606110850346_r1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606110853170_r2.resx">
+      <DependentUpon>201606110853170_r2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

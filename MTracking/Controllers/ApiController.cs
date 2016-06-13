@@ -83,6 +83,13 @@ namespace MTracking.Controllers
                 return null;
             }
 
+            var comments = bug?.Comments?.Select(i => new
+            {
+                Name = i.User?.FirstName + " " + i.User?.LastName,
+                DateString = i.DateAdded.ToString(),
+                Text = i.Content
+            }).ToArray();
+
             return jss.Serialize(
                 new {
                     Id = bug.Id,
@@ -91,7 +98,8 @@ namespace MTracking.Controllers
                     ReproductionSteps = bug.ReproductionSteps,
                     ExpectedResult = bug.ExpectedResult,
                     Status = bug.BugStatus?.Status,
-                    AssignedUser = bug.User?.FirstName+" "+bug.User?.LastName
+                    AssignedUser = bug.User?.FirstName+" "+bug.User?.LastName,
+                    Comments = comments
                 });
         }
     }

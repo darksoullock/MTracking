@@ -7,13 +7,13 @@ namespace MTracking.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class Comments : IMigrationMetadata
+    public sealed partial class r1 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Comments));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(r1));
         
         string IMigrationMetadata.Id
         {
-            get { return "201606081330033_Comments"; }
+            get { return "201606110850346_r1"; }
         }
         
         string IMigrationMetadata.Source

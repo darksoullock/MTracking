@@ -13,4 +13,15 @@ namespace MTracking.Migrations
         {
         }
     }
+
+    public partial class CopyOffkbugproject : DbMigration
+    {
+        public override void Up()
+        {
+        }
+
+        public override void Down()
+        {
+        }
+    }
 }
