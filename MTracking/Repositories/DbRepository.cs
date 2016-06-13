@@ -121,7 +121,6 @@ namespace MTracking.Repositories
 
         public void AddComment(int userId, string text, int bugId)
         {
-
             var comment = new Comment()
             {
                 BugId = bugId,

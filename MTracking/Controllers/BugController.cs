@@ -57,21 +57,28 @@ namespace MTracking.Controllers
             return Redirect("/Project/Details/" + bug.ProjectId + "?tab=/Bug/BugsPartial");
         }
 
+        // функция вызывается ajax запросом со страницы BugDetails
         public void ChangeStatus(int statusId, int bugId)
         {
+            // получаем пользователя из сессии
             var user = Session["user"] as User;
+            // если в сессии нет пользователя, значит он не залогинен.
             if (user == null)
             {
+                //ничего не делаем, выходим
                 return;
             }
 
             var db = new DbRepository();
-            var projects = db.GetProjectByBugId(bugId);
-            if (projects.Owner.Id != user.Id && projects.Users.FirstOrDefault(i => i.Id == user.Id) == null)
+            // получаем проект, к которому относится баг
+            var project = db.GetProjectByBugId(bugId);
+            // Если пользователь не относится к проекту, то выходим
+            if (project.Owner.Id != user.Id && project.Users.FirstOrDefault(i => i.Id == user.Id) == null)
             {
                 return;
             }
 
+            // меняем статус
             db.ChangeBugStatus(bugId, statusId);
         }
 
